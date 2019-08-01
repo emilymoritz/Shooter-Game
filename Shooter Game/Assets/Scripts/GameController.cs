@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
     {
         if (restart)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 SceneManager.LoadScene("SampleScene");
             }
@@ -67,7 +67,7 @@ public class GameController : MonoBehaviour
 
             if (gameOver)
             {
-                restartText.text = "Press 'R' to Restart";
+                restartText.text = "Press 'P' to Restart";
                 restart = true;
                 break;
             }
