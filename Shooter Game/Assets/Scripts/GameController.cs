@@ -6,13 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-<<<<<<< Updated upstream
 
     public GameObject hazard;
-=======
     public GameObject[] hazards;
     public GameObject pickup;
->>>>>>> Stashed changes
     public Vector3 spawnValues;
     public int hazardCount;
     public float spawnWait;
@@ -22,19 +19,18 @@ public class GameController : MonoBehaviour
     public Text ScoreText;
     public Text restartText;
     public Text gameOverText;
+    public Text creditsText;
+    public Text PointText;
 
     private bool gameOver;
     private bool restart;
-<<<<<<< Updated upstream
     private int score;
-=======
     public int points;
 
     public AudioSource audioSource;
     public AudioClip music_background;
     public AudioClip victory_music;
     public AudioClip lose_sound;
->>>>>>> Stashed changes
 
     void Start()
     {
@@ -66,11 +62,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
     IEnumerator SpawnWaves ()
-=======
-            IEnumerator SpawnWaves ()
->>>>>>> Stashed changes
+
     {
         yield return new WaitForSeconds(startWait);
         while (true)
@@ -114,10 +107,10 @@ public class GameController : MonoBehaviour
 
     void UpdateScore()
     {
-<<<<<<< Updated upstream
+        {
+
         ScoreText.text = "Score: " + score;
-    }
-=======
+        }
         PointText.text = "Points: " + points;
 
             if (points >= 100)
@@ -129,7 +122,6 @@ public class GameController : MonoBehaviour
                 audioSource.PlayOneShot(victory_music);
             }
      }
->>>>>>> Stashed changes
 
     public void GameOver ()
     {

@@ -24,11 +24,7 @@ public class DestroybyContact : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-<<<<<<< Updated upstream
-        if (other.tag == "Boundary")
-=======
         if (other.CompareTag("Boundary") || other.CompareTag("Enemy") || other.CompareTag("Pick Up"))
->>>>>>> Stashed changes
         {
             return;
         }
