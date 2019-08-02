@@ -14,7 +14,11 @@ public class PlayerController : MonoBehaviour
     public Boundary boundary;
 
     public GameObject shot;
+    public GameObject shotL;
+    public GameObject shotR;
     public Transform shotSpawn;
+    public Transform shotSpawnL;
+    public Transform shotSpawnR;
     public float fireRate;
 
     private float nextFire;
@@ -30,10 +34,28 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (Input.GetKeyDown(KeyCode.Z) && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            audioData = GetComponent<AudioSource>();
+            audioData.Play(0);
+            Debug.Log("started");
+        }
+
+        else if (Input.GetKeyDown(KeyCode.X) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shotL, shotSpawnL.position, shotSpawnL.rotation);
+            audioData = GetComponent<AudioSource>();
+            audioData.Play(0);
+            Debug.Log("started");
+        }
+
+        else if (Input.GetKeyDown(KeyCode.C) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shotR, shotSpawnR.position, shotSpawnR.rotation);
             audioData = GetComponent<AudioSource>();
             audioData.Play(0);
             Debug.Log("started");
@@ -56,5 +78,15 @@ public class PlayerController : MonoBehaviour
         );
 
         rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pick Up"))
+        {
+            other.gameObject.SetActive(false);
+            speed = speed * 2;
+        }
+
     }
 }
